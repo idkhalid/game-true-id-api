@@ -3,7 +3,7 @@
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-org/game-true-id-api&env=GAME_TRUE_ID_WORKERS_URL)
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/your-org/game-true-id-api)
 
-A lightweight API gateway for resolving game identities.
+A lightweight, runtime-portable API gateway for resolving game identities. Requests are normalized across multiple upstream providers.
 
 Base URL:
 `https://api.game-true-id.eu.cc`
@@ -38,6 +38,7 @@ GET https://api.game-true-id.eu.cc/nickname/mobile-legends?user_id=1114917746&zo
 | Call of Duty Mobile | `call-of-duty-mobile` | `user_id` |
 | Arena of Valor | `arena-of-valor` | `user_id` |
 | Genshin Impact | `genshin-impact` | `user_id` |
+| Honkai: Star Rail | `honkai-star-rail` | `user_id` |
 
 ## Responses
 
