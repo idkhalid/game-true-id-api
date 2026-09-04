@@ -74,6 +74,23 @@ export async function handleRequest(request: Request): Promise<Response> {
           { status: 400, headers: baseHeaders }
         );
       }
+
+      if (gameDef.slug === 'wuthering-waves' && param === 'server') {
+        const validServers = ['sea', 'asia', 'tw-hk-mo', 'america', 'europe'];
+        if (!validServers.includes(val)) {
+          return new Response(
+            JSON.stringify({
+              success: false,
+              error: {
+                code: 'INVALID_REQUEST',
+                message: 'Invalid server value.',
+              },
+            }),
+            { status: 400, headers: baseHeaders }
+          );
+        }
+      }
+
       inputs[param] = val;
     }
 

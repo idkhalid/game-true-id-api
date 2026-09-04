@@ -18,8 +18,28 @@ export async function callBackend(input: ResolveInput): Promise<PublicResponse> 
   const workersUrl = process.env.GAME_TRUE_ID_WORKERS_URL || 'https://workers.game-true-id.eu.cc';
   const adapterUrl = process.env.GAME_TRUE_ID_ADAPTER_URL || 'https://adapter.game-true-id.eu.cc';
   
-  const baseUrl = (input.game === 'honkai-star-rail' || input.game === 'zenless-zone-zero' || input.game === 'free-fire-global') ? adapterUrl : workersUrl;
+  const baseUrl = (input.game === 'honkai-star-rail' || input.game === 'zenless-zone-zero' || input.game === 'free-fire-global' || input.game === 'wuthering-waves') ? adapterUrl : workersUrl;
   const resolveEndpoint = `${baseUrl}/v1/resolve`;
+
+  const requestPayload: any = {
+    game: input.game,
+    inputs: { ...input.inputs }
+  };
+
+  const WUWA_SERVER_MAPPING: Record<string, string> = {
+    'sea': 'os_sea',
+    'asia': 'os_asia',
+    'tw-hk-mo': 'os_cht',
+    'america': 'os_usa',
+    'europe': 'os_euro'
+  };
+
+  if (input.game === 'wuthering-waves' && input.inputs.server) {
+    const internalServer = WUWA_SERVER_MAPPING[input.inputs.server];
+    if (internalServer) {
+      requestPayload.inputs.server = internalServer;
+    }
+  }
 
   // Standard 5 second timeout
   const controller = new AbortController();
@@ -32,7 +52,7 @@ export async function callBackend(input: ResolveInput): Promise<PublicResponse> 
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify(input),
+      body: JSON.stringify(requestPayload),
       signal: controller.signal,
     });
 
@@ -47,6 +67,23 @@ export async function callBackend(input: ResolveInput): Promise<PublicResponse> 
             message: 'Account not found.',
           },
         };
+      }
+      
+      if (response.status === 400) {
+        try {
+          const errBody = await response.clone().json() as any;
+          if (errBody && errBody.error && errBody.error.code === 'ACCOUNT_NOT_FOUND') {
+            return {
+              success: false,
+              error: {
+                code: 'ACCOUNT_NOT_FOUND',
+                message: 'Account not found.',
+              },
+            };
+          }
+        } catch (e) {
+          // ignore
+        }
       }
       
       if (response.status === 429) {
@@ -83,6 +120,21 @@ export async function callBackend(input: ResolveInput): Promise<PublicResponse> 
 
       if (result.data.attributes?.region) {
         publicData.region = result.data.attributes.region;
+      }
+
+      if (input.game === 'wuthering-waves') {
+        const adapterServer = result.data.attributes?.server;
+        const expectedAdapterServer = WUWA_SERVER_MAPPING[input.inputs.server];
+        
+        if (adapterServer !== expectedAdapterServer) {
+          return {
+            success: false,
+            error: {
+              code: 'INTERNAL_ERROR',
+              message: 'Invalid response from upstream service.',
+            }
+          };
+        }
       }
       
       // Some games may return it directly in result.data.nickname, let's be safe

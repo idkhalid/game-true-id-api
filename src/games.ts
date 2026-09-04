@@ -9,7 +9,8 @@ export type GameSlug =
   | 'genshin-impact'
   | 'honkai-star-rail'
   | 'zenless-zone-zero'
-  | 'free-fire-global';
+  | 'free-fire-global'
+  | 'wuthering-waves';
 
 export interface GameDefinition {
   slug: GameSlug;
@@ -72,6 +73,11 @@ export const GAMES: GameDefinition[] = [
     slug: 'free-fire-global',
     name: 'Free Fire Global',
     requiredParams: ['user_id'],
+  },
+  {
+    slug: 'wuthering-waves',
+    name: 'Wuthering Waves',
+    requiredParams: ['user_id', 'server'],
   },
 ];
 
