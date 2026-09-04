@@ -7,7 +7,8 @@ export type GameSlug =
   | 'call-of-duty-mobile'
   | 'arena-of-valor'
   | 'genshin-impact'
-  | 'honkai-star-rail';
+  | 'honkai-star-rail'
+  | 'zenless-zone-zero';
 
 export interface GameDefinition {
   slug: GameSlug;
@@ -59,6 +60,11 @@ export const GAMES: GameDefinition[] = [
   {
     slug: 'honkai-star-rail',
     name: 'Honkai: Star Rail',
+    requiredParams: ['user_id'],
+  },
+  {
+    slug: 'zenless-zone-zero',
+    name: 'Zenless Zone Zero',
     requiredParams: ['user_id'],
   },
 ];

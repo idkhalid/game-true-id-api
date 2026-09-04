@@ -39,6 +39,7 @@ GET https://api.game-true-id.eu.cc/nickname/mobile-legends?user_id=1114917746&zo
 | Arena of Valor | `arena-of-valor` | `user_id` |
 | Genshin Impact | `genshin-impact` | `user_id` |
 | Honkai: Star Rail | `honkai-star-rail` | `user_id` |
+| Zenless Zone Zero | `zenless-zone-zero` | `user_id` |
 
 ## Responses
 
