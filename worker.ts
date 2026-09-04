@@ -10,6 +10,9 @@ export default {
     if (env && env.GAME_TRUE_ID_WORKERS_URL) {
       process.env.GAME_TRUE_ID_WORKERS_URL = env.GAME_TRUE_ID_WORKERS_URL;
     }
+    if (env && env.GAME_TRUE_ID_ADAPTER_URL) {
+      process.env.GAME_TRUE_ID_ADAPTER_URL = env.GAME_TRUE_ID_ADAPTER_URL;
+    }
     return handleRequest(request);
   }
 };

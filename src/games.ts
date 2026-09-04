@@ -6,7 +6,8 @@ export type GameSlug =
   | 'magic-chess'
   | 'call-of-duty-mobile'
   | 'arena-of-valor'
-  | 'genshin-impact';
+  | 'genshin-impact'
+  | 'honkai-star-rail';
 
 export interface GameDefinition {
   slug: GameSlug;
@@ -53,6 +54,11 @@ export const GAMES: GameDefinition[] = [
   {
     slug: 'genshin-impact',
     name: 'Genshin Impact',
+    requiredParams: ['user_id'],
+  },
+  {
+    slug: 'honkai-star-rail',
+    name: 'Honkai: Star Rail',
     requiredParams: ['user_id'],
   },
 ];

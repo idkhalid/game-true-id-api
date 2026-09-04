@@ -16,7 +16,10 @@ export interface PublicResponse {
 
 export async function callBackend(input: ResolveInput): Promise<PublicResponse> {
   const workersUrl = process.env.GAME_TRUE_ID_WORKERS_URL || 'https://workers.game-true-id.eu.cc';
-  const resolveEndpoint = `${workersUrl}/v1/resolve`;
+  const adapterUrl = process.env.GAME_TRUE_ID_ADAPTER_URL || 'https://adapter.game-true-id.eu.cc';
+  
+  const baseUrl = input.game === 'honkai-star-rail' ? adapterUrl : workersUrl;
+  const resolveEndpoint = `${baseUrl}/v1/resolve`;
 
   // Standard 5 second timeout
   const controller = new AbortController();

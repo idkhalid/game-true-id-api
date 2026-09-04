@@ -5,3 +5,4 @@ compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
 GAME_TRUE_ID_WORKERS_URL = "https://workers.game-true-id.eu.cc"
+GAME_TRUE_ID_ADAPTER_URL = "https://adapter.game-true-id.eu.cc"
