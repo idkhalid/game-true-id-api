@@ -40,6 +40,7 @@ GET https://api.game-true-id.eu.cc/nickname/mobile-legends?user_id=1114917746&zo
 | Genshin Impact | `genshin-impact` | `user_id` |
 | Honkai: Star Rail | `honkai-star-rail` | `user_id` |
 | Zenless Zone Zero | `zenless-zone-zero` | `user_id` |
+| Free Fire Global (multi-region resolution) | `free-fire-global` | `user_id` |
 
 ## Responses
 
