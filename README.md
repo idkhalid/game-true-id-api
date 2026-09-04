@@ -41,6 +41,16 @@ GET https://api.game-true-id.eu.cc/nickname/mobile-legends?user_id=1114917746&zo
 | Honkai: Star Rail | `honkai-star-rail` | `user_id` |
 | Zenless Zone Zero | `zenless-zone-zero` | `user_id` |
 | Free Fire Global (multi-region resolution) | `free-fire-global` | `user_id` |
+| Wuthering Waves | `wuthering-waves` | `user_id`, `server` |
+
+Canonical public server values for Wuthering Waves:
+- `sea` — Southeast Asia
+- `asia` — Asia
+- `tw-hk-mo` — Taiwan / Hong Kong / Macau
+- `america` — America
+- `europe` — Europe
+
+Example: `GET /nickname/wuthering-waves?user_id=600717607&server=europe`
 
 ## Responses
 
