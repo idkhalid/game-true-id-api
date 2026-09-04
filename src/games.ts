@@ -8,7 +8,8 @@ export type GameSlug =
   | 'arena-of-valor'
   | 'genshin-impact'
   | 'honkai-star-rail'
-  | 'zenless-zone-zero';
+  | 'zenless-zone-zero'
+  | 'free-fire-global';
 
 export interface GameDefinition {
   slug: GameSlug;
@@ -65,6 +66,11 @@ export const GAMES: GameDefinition[] = [
   {
     slug: 'zenless-zone-zero',
     name: 'Zenless Zone Zero',
+    requiredParams: ['user_id'],
+  },
+  {
+    slug: 'free-fire-global',
+    name: 'Free Fire Global',
     requiredParams: ['user_id'],
   },
 ];
