@@ -1,0 +1,7 @@
+name = "game-true-id-api"
+main = "worker.ts"
+compatibility_date = "2024-03-20"
+compatibility_flags = [ "nodejs_compat" ]
+
+[vars]
+GAME_TRUE_ID_WORKERS_URL = "https://workers.game-true-id.eu.cc"

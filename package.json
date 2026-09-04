@@ -2,7 +2,6 @@
   "name": "game-true-id-api",
   "version": "1.0.0",
   "description": "Game True ID API Gateway",
-  "main": "dist/src/server.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/src/server.js",

@@ -1,5 +1,8 @@
 # Game True ID API
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-org/game-true-id-api&env=GAME_TRUE_ID_WORKERS_URL)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/your-org/game-true-id-api)
+
 A lightweight API gateway for resolving game identities.
 
 Base URL:
